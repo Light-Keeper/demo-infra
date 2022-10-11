@@ -21,8 +21,8 @@ spec:
     spec:
       containers:
         - name: my-nginx
-          image: crccheck/hello-world
+          image:  mendhak/http-https-echo
           ports:
-            - containerPort: 8000
+            - containerPort: 80
 
 
