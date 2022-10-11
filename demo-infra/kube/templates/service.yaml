@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+
+metadata:
+  name: {{ .Release.Name }}-{{ .Chart.Name }}-my-service
+  labels:
+    app: {{ .Release.Name }}-{{ .Chart.Name }}-nginx
+
+spec:
+  type: ClusterIP
+  selector:
+    app:  {{ .Release.Name }}-{{ .Chart.Name }}-nginx
+  ports:
+    - port: 80
+      targetPort: 8000

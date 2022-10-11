@@ -1,0 +1,28 @@
+kind: Deployment
+apiVersion: apps/v1
+
+metadata:
+  name: {{ .Release.Name }}-{{ .Chart.Name }}-my-service
+  labels:
+    app: {{ .Release.Name }}-{{ .Chart.Name }}-nginx
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-{{ .Chart.Name }}-nginx
+
+  template:
+    metadata:
+      name: {{ .Release.Name }}-{{ .Chart.Name }}-my-service
+      labels:
+        app: {{ .Release.Name }}-{{ .Chart.Name }}-nginx
+
+    spec:
+      containers:
+        - name: my-nginx
+          image: crccheck/hello-world
+          ports:
+            - containerPort: 8000
+
+
